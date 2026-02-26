@@ -1,4 +1,4 @@
-package com.adminPanel.app.model;
+package com.adminPanel.app.enums;
 
 public enum Manufacturer {
     PFIZER,

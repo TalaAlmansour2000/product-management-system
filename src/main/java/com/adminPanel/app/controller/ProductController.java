@@ -6,7 +6,7 @@ import com.adminPanel.app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import com.adminPanel.app.enums.Manufacturer;
 import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/products")
@@ -26,7 +26,7 @@ public class ProductController {
         product.setProductDetails(new ProductDetails());
 //make sure it will be saved with lazy load
         model.addAttribute("productModel", product);
-        model.addAttribute("manufacturers", com.adminPanel.app.model.Manufacturer.values());
+        model.addAttribute("manufacturers", com.adminPanel.app.enums.Manufacturer.values());
         return "addProductForm";
     }
 
@@ -55,7 +55,7 @@ public class ProductController {
     @GetMapping("/edit")
     public String showEditForm(@RequestParam("productId") int id, Model model) {
         model.addAttribute("productModel", productService.findById(id));
-        model.addAttribute("manufacturers", com.adminPanel.app.model.Manufacturer.values());
+        model.addAttribute("manufacturers", Manufacturer.values());
         return "addProductForm";
     }
 
@@ -64,7 +64,6 @@ public class ProductController {
         productService.deleteById(id);
         return "redirect:/products/";
     }
-
 
 
 
